@@ -29,10 +29,11 @@ class rocksdbWrapper {
   std::vector<std::string> families_;
   rocksMapHasher& hasherObj_;
   std::map<std::string, std::map<std::string, std::string>> mapa_;
+  /* ключ - std::string, значение - std::map<std::string, std::string> */
 
  public:
   rocksdbWrapper(int columns, int family, std::string path,
-                 rocksMapHasher& hasher)
+                 rocksMapHasher& hasher) /* */
       : columnSize_(columns),
         familyNum_(family),
         path_(std::move(path)),

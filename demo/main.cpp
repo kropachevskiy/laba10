@@ -52,9 +52,7 @@ int main(int argc, char* argv[]) {
   db.pushData();
   std::map<std::string, std::map<std::string, std::string>> mapa;
   std::vector<std::string> fams = db.getFamilyNum();
-
   db.migrateDataToMap(logLevel);
-
   rocksdbWrapper outputDB =
       rocksdbWrapper(hasher.getHashedMap(), outPath, hasher);
   outputDB.createOutputDatabase();

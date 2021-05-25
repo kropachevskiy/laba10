@@ -27,9 +27,7 @@ void rocksdbWrapper::createDatabase() {
 
   delete db_;
 }
-
 std::vector<std::string> rocksdbWrapper::getFamilyNum() { return families_; }
-
 void rocksdbWrapper::pushData() {
   rocksdb::Options options;
 
@@ -55,14 +53,13 @@ void rocksdbWrapper::pushData() {
       assert(status.ok());
     }
   }
-  for (auto handle : handles) {
+  for (auto& handle : handles) {
     status = db_->DestroyColumnFamilyHandle(handle);
     assert(status.ok());
   }
 
   delete db_;
 }
-
 void rocksdbWrapper::migrateDataToMap(std::string logLevel) {
   rocksdb::Options options;
   std::vector<rocksdb::ColumnFamilyHandle*> handles;
@@ -92,7 +89,6 @@ void rocksdbWrapper::migrateDataToMap(std::string logLevel) {
   }
   delete db_;
 }
-
 void rocksdbWrapper::createOutputDatabase() {
   rocksdb::Options options;
   options.create_if_missing = true;
